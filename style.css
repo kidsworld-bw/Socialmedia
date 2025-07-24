@@ -1,0 +1,512 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #0f1419 0%, #1a2744 50%, #2a4365 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    direction: rtl;
+    text-align: right;
+    position: relative;
+}
+
+/* Starry background layers */
+.stars, .stars2, .stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.stars {
+    background: 
+        radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
+        radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90% 40%, #ffffff, transparent),
+        radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,0.6), transparent);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    animation: sparkle 20s linear infinite;
+}
+
+.stars2 {
+    background: 
+        radial-gradient(1px 1px at 10% 10%, rgba(135,206,250,0.8), transparent),
+        radial-gradient(1px 1px at 60% 80%, rgba(173,216,230,0.6), transparent),
+        radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.4), transparent);
+    background-size: 400px 400px, 200px 200px, 300px 300px;
+    animation: sparkle 30s linear infinite reverse;
+}
+
+.stars3 {
+    background: 
+        radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 80% 90%, rgba(135,206,250,0.5), transparent),
+        radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.2), transparent);
+    background-size: 600px 600px, 100px 100px, 500px 500px;
+    animation: sparkle 40s linear infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Mouse trail effects */
+.mouse-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.trail-star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: trailFade 1s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+}
+
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: sparkleFloat 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1);
+    }
+}
+
+/* Header styles */
+header {
+    background: rgba(15, 20, 25, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.store-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.store-info h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #60a5fa, #a78bfa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.location {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    font-weight: 300;
+}
+
+/* Main content */
+main {
+    position: relative;
+    z-index: 5;
+    padding: 3rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Contact section */
+.contact-section {
+    margin-bottom: 4rem;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f1f5f9;
+    font-weight: 600;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+.hours-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #e2e8f0;
+}
+
+.contact-link {
+    display: inline-block;
+    font-size: 1.3rem;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #93c5fd;
+    transform: scale(1.05);
+}
+
+.contact-text {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+/* Social section */
+.social-section {
+    text-align: center;
+}
+
+.social-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #f1f5f9;
+    font-weight: 600;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    justify-content: center;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.social-link.facebook:hover {
+    background: rgba(24, 119, 242, 0.2);
+    border-color: rgba(24, 119, 242, 0.4);
+    color: #60a5fa;
+}
+
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, rgba(225, 48, 108, 0.2), rgba(255, 220, 128, 0.2));
+    border-color: rgba(225, 48, 108, 0.4);
+    color: #f472b6;
+}
+
+.social-link.tiktok:hover {
+    background: rgba(37, 244, 238, 0.2);
+    border-color: rgba(37, 244, 238, 0.4);
+    color: #06d6a0;
+}
+
+.social-link svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* WhatsApp floating button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+    animation: none;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* Accessibility improvements */
+.keyboard-nav *:focus {
+    outline: 3px solid #60a5fa;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Performance optimizations */
+.social-link, .contact-item, .logo {
+    contain: layout;
+    will-change: transform;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .store-info h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .location {
+        font-size: 1.1rem;
+    }
+    
+    .contact-section h2,
+    .social-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .social-link {
+        min-width: 200px;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .whatsapp-float {
+        bottom: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .store-info h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .contact-section h2,
+    .social-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+    }
+    
+    .social-link {
+        padding: 1rem 1.5rem;
+        min-width: 180px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .contact-item,
+    .social-link {
+        border-width: 2px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .stars,
+    .stars2,
+    .stars3,
+    .sparkle,
+    .trail-star,
+    .whatsapp-float {
+        animation: none;
+    }
+    
+    .logo,
+    .contact-item,
+    .social-link {
+        transition: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .stars,
+    .stars2,
+    .stars3,
+    .mouse-trail,
+    .sparkle,
+    .whatsapp-float {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .contact-item,
+    .social-link {
+        background: white;
+        border: 1px solid black;
+        color: black;
+    }
+} 
